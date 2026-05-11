@@ -1,0 +1,38 @@
+-- Create Database
+CREATE DATABASE CompanyDB;
+
+-- Use Database
+USE CompanyDB;
+
+-- Create Employee Table with Constraints
+CREATE TABLE Employee (
+    Emp_ID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    Salary DECIMAL(10,2) CHECK (Salary > 10000)
+);
+
+-- Insert Records
+INSERT INTO Employee (Emp_ID, Name, Email, Salary)
+VALUES
+(1, 'Rahul', 'rahul@gmail.com', 25000),
+(2, 'Amit', 'amit@gmail.com', 30000),
+(3, 'Sneha', 'sneha@gmail.com', 45000);
+
+-- Display Table
+SELECT * FROM Employee;
+
+-- Example for CHECK Constraint Failure
+-- This will give error because salary is less than 10000
+-- INSERT INTO Employee VALUES (4, 'Riya', 'riya@gmail.com', 8000);
+
+-- Example for UNIQUE Constraint Failure
+-- This will give error because email already exists
+-- INSERT INTO Employee VALUES (5, 'Karan', 'rahul@gmail.com', 20000);
+
+-- Example for NOT NULL Constraint Failure
+-- This will give error because Name cannot be NULL
+-- INSERT INTO Employee VALUES (6, NULL, 'test@gmail.com', 22000);
+
+-- Drop Table
+-- DROP TABLE Employee;
